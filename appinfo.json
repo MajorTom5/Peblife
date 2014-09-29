@@ -1,0 +1,19 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "majortom",
+    "longName": "Peblife",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "shortName": "Peblife",
+    "uuid": "352b85fb-8e21-4854-9e63-c159fec36cba",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}

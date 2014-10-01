@@ -23,8 +23,8 @@ static void layer_update_callback(Layer *me, GContext* ctx){
 	for(int i=0;i<PEBLIFE_SIZE;i++){
 		for(int j=0;j<PEBLIFE_SIZE;j++){
                       
-				if(dispArray[i][j]){
- 					graphics_fill_rect(ctx,GRect(i*rectWidth,j*rectHeight,rectWidth,rectHeight),0,GCornerNone);
+		if(dispArray[i][j]){
+ 			graphics_fill_rect(ctx,GRect(i*rectWidth,j*rectHeight,rectWidth,rectHeight),0,GCornerNone);
                 }
         }
 			

@@ -14,33 +14,23 @@ static Layer *layer;
 static bool calcArray[PEBLIFE_SIZE][PEBLIFE_SIZE];
 static bool dispArray[PEBLIFE_SIZE][PEBLIFE_SIZE];
 
-static void layer_update_callback(Layer *me, GContext* ctx) {
-  // We make sure the dimensions of the GRect to draw into
-  // are equal to the size of the bitmap--otherwise the image
-  // will automatically tile. Which might be what *you* want.
+static void layer_update_callback(Layer *me, GContext* ctx){
 	
-	//GRect bounds = me->bounds;
-        GRect lBounds = layer_get_bounds(me);
-        float rectWidth = lBounds.size.w/PEBLIFE_SIZE;
-       float rectHeight = lBounds.size.h/PEBLIFE_SIZE;
+    GRect lBounds = layer_get_bounds(me);
+    float rectWidth = lBounds.size.w/PEBLIFE_SIZE;
+    float rectHeight = lBounds.size.h/PEBLIFE_SIZE;
 
-         float errorCoefW = lBounds.size.w - (rectWidth * PEBLIFE_SIZE);
-float errorCoefH = lBounds.size.h - (rectWidth * PEBLIFE_SIZE);
 	for(int i=0;i<PEBLIFE_SIZE;i++){
 		for(int j=0;j<PEBLIFE_SIZE;j++){
                       
-if(dispArray[i][j]){
- graphics_fill_rect(ctx,GRect(i*rectWidth,j*rectHeight,rectWidth,rectHeight),0,GCornerNone);
-}
-                      }
+				if(dispArray[i][j]){
+ 					graphics_fill_rect(ctx,GRect(i*rectWidth,j*rectHeight,rectWidth,rectHeight),0,GCornerNone);
+                }
+        }
 			
-		}
+   }
   
-					
-  	
-   
-  //graphics_draw_bitmap_in_rect(ctx, image, (GRect) { .origin = { 5, 5 }, .size = bounds.size });
-  //graphics_draw_bitmap_in_rect(ctx, image, (GRect) { .origin = { 80, 60 }, .size = bounds.size });
+				
 }
 
 static void peblife_run_iteration(){//Run one iteration of the Conway's game of life simulation. Note:
@@ -65,17 +55,14 @@ static void peblife_run_iteration(){//Run one iteration of the Conway's game of 
 		}
 	}
 }
-static void peblife_display_array(){
-	
-	
-}
+
 static void peblife_initialize(){
 	
-	//memset(P_CARRAY,0,ARRAYSIZE);//Set the calcArray to all zero's
-	//memset(P_DARRAY,0,ARRAYSIZE);//Set the dispArray to all zero's
+	memset(P_CARRAY,0,ARRAYSIZE);//Set the calcArray to all zero's
+	memset(P_DARRAY,0,ARRAYSIZE);//Set the dispArray to all zero's
 
-    for(int i=0;i<(PEBLIFE_SIZE-1);i++){
-		for(int j=0;j<(PEBLIFE_SIZE-1);j++){
+    for(int i=1;i<(PEBLIFE_SIZE-1);i++){
+		for(int j=1;j<(PEBLIFE_SIZE-1);j++){
         		dispArray[i][j] = (rand() % 2);//Generate a random number of 0 or 1
         }
 }
@@ -103,24 +90,15 @@ int main(void) {
   //{
 	app_event_loop();  
 	
-	for(int i = 0; i<10;i++){
+	for(int i = 0; i<10;i++){//DBG: Only do this 10 times in case soemthing happens.
 	  //peblife_run_iteration();//Update the grid
-	  peblife_initialize();
-	  peblife_display_array();
+	  peblife_initialize();//DBG: Simple hack to test display updates. The final version will call peblife_run_iteration()
+	  
 	  layer_mark_dirty(layer);
       
 	}
 	//}
-
 	
-  
-
-  //image = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_NO_LITTER);
-
-  
-
-  //gbitmap_destroy(image);
-
   window_destroy(window);
   layer_destroy(layer);
 }

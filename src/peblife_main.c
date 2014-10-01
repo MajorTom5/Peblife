@@ -5,12 +5,12 @@
 #define P_CARRAY &(calcArray[0][0])
 #define P_DARRAY &(dispArray[0][0])
 #define ARRAYSIZE sizeof(bool)*(PEBLIFE_SIZE*PEBLIFE_SIZE)
-	
-static Window *window;
 
+//Global variables for the Pebble App
+static Window *window;
 static Layer *layer;
 
-
+//My global variables for Peblife
 static bool calcArray[PEBLIFE_SIZE][PEBLIFE_SIZE];
 static bool dispArray[PEBLIFE_SIZE][PEBLIFE_SIZE];
 

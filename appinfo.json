@@ -7,7 +7,13 @@
     "longName": "Peblife",
     "projectType": "native",
     "resources": {
-        "media": []
+        "media": [
+            {
+                "file": "images/Life1-300x272.png",
+                "name": "PEBLIFE_ICON",
+                "type": "png"
+            }
+        ]
     },
     "shortName": "Peblife",
     "uuid": "352b85fb-8e21-4854-9e63-c159fec36cba",
